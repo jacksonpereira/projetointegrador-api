@@ -1,0 +1,12 @@
+{
+    "type": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "username": "postgres",
+    "password": "123456",
+    "database": "postgres",
+    "entities": ["__dirname + '/src/*.model.{js,ts}'"],
+    "synchronize": true,
+    "logging": true,
+    "autoLoadEntities": true
+  }
