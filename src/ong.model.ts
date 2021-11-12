@@ -23,6 +23,9 @@ export class ONG extends BaseEntity {
     cep: string;
 
     @Column({nullable: false, type: "varchar", width: 60})
+    bairro: string;
+
+    @Column({nullable: false, type: "varchar", width: 60})
     cidade: string;
 
     @Column({nullable: false, type: "varchar", width: 60})
