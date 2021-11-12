@@ -14,7 +14,7 @@ export class AppService {
   }
 
   async getONGs(): Promise<ONG[]> {
-    let ongs:ONG[] = await this.ongRO.find();
+    let ongs:ONG[] = await this.ongRO.find({order: {id: "DESC"}, skip: 0, take: 3});
     return ongs;
   }
 
