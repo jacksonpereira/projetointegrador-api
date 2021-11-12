@@ -12,8 +12,8 @@ import { Connection } from 'typeorm';
     ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: <any>String('postgres'),
-      host: String(process.env.DB_HOST),
-      port: Number(process.env.PORT_DB),
+      host: String(process.env.HOST_DB),
+      port: 5432,
       username: String(process.env.USERNAME_DB),
       password: String(process.env.PASSWORD_DB),
       database: String(process.env.NAME_DB),
