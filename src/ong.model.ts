@@ -45,4 +45,7 @@ export class ONG extends BaseEntity {
 
     @Column({nullable: false, type: "varchar", width: 14})
     cnpj: string;
+
+    @Column({nullable: false, type: "varchar", width: 500})
+    descricao: string;
 }
