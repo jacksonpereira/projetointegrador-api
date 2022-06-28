@@ -2,9 +2,11 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ONG } from './ong.model';
+import { Contato } from './contato.model';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Connection } from 'typeorm';
+import { DadosBancarios } from './dadosBancarios.model';
 
 @Module({
   imports: [
@@ -18,7 +20,7 @@ import { Connection } from 'typeorm';
       password: String(process.env.PASSWORD_DB),
       database: String(process.env.NAME_DB),
       entities: [
-        ONG,
+        ONG, Contato, DadosBancarios
       ],
       synchronize: Boolean(true),
       ssl: Boolean(process.env.DB_SSL == 'true' ? true: false),
@@ -31,7 +33,7 @@ import { Connection } from 'typeorm';
       autoLoadEntities: true,
     }),
     TypeOrmModule.forFeature([
-      ONG,
+      ONG, Contato, DadosBancarios
     ])
   ],
   controllers: [AppController],

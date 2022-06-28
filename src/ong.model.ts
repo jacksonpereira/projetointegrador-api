@@ -1,4 +1,6 @@
-import {Entity, Column, PrimaryGeneratedColumn, BaseEntity} from 'typeorm';
+import {Entity, Column, PrimaryGeneratedColumn, BaseEntity, OneToOne, JoinColumn} from 'typeorm';
+import { Contato } from './contato.model';
+import { DadosBancarios } from './dadosBancarios.model';
 
 @Entity('ong')
 export class ONG extends BaseEntity {
@@ -34,14 +36,13 @@ export class ONG extends BaseEntity {
     @Column({nullable: false, type: "varchar", width: 60})
     pais: string;
 
-    @Column({nullable: false, type: "varchar", width: 60})
-    telefone: string;
+    @OneToOne(() => Contato, contato => contato.id, {eager:true, cascade:["insert","update","remove","soft-remove","recover"]})
+    @JoinColumn()
+    contato: Contato
 
-    @Column({nullable: false, type: "varchar", width: 60})
-    email: string;
-
-    @Column({nullable: true, type: "varchar", width: 60})
-    site: string;
+    @OneToOne(() => DadosBancarios, dadosBancarios => dadosBancarios.id, {eager:true, cascade:["insert","update","remove","soft-remove","recover"]})
+    @JoinColumn()
+    dadosBancarios: DadosBancarios
 
     @Column({nullable: false, type: "varchar", width: 14})
     cnpj: string;
